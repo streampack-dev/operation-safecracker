@@ -29,7 +29,7 @@ just full-release
 
 This releases from an up-to-date `main`. It builds and tests the jar, deploys it to Nexus
 `maven-releases` and commits the new version in `.mvn/maven.config`, then pushes. A
-`-SNAPSHOT` version releases as itself (`1.0.0-SNAPSHOT` becomes `1.0.0`); after that,
+`-SNAPSHOT` version releases as itself (`2.0.0-SNAPSHOT` becomes `2.0.0`); after that,
 `just full-release minor` or `major` picks the part to bump (the default is `patch`).
 `just release` does the same without the commit and push.
 
