@@ -19,7 +19,24 @@ the game's own classes; the server provides `lib-extension-api`.
 `streampack.version` in `pom.xml` is the server version the jar is built against, 1.16.12 or
 later. Use the version of the server you run.
 
+## Release
+
+You need write access to Nexus, as the `nexus-streampack` server in `~/.m2/settings.xml`.
+
+```sh
+just full-release
+```
+
+This releases from an up-to-date `main`. It builds and tests the jar, deploys it to Nexus
+`maven-releases` and commits the new version in `.mvn/maven.config`, then pushes. A
+`-SNAPSHOT` version releases as itself (`1.0.0-SNAPSHOT` becomes `1.0.0`); after that,
+`just full-release minor` or `major` picks the part to bump (the default is `patch`).
+`just release` does the same without the commit and push.
+
 ## Install
+
+With the deploy repository, `just deploy ext operation-safecracker` fetches the newest release
+from Nexus into `ext/` and recreates the server. To install a jar by hand:
 
 1. Copy the jar into the server's `ext/` directory (`/opt/streampack/ext` in the image, or
    `STREAMPACK_EXT_DIR`).
